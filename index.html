@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href=" https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.min.css " rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Todo App</title>
+</head>
+
+<body>
+  <div class="loading">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="ta-container">
+    <div class="ta__inner-content">
+      <div class="ta__app-heading">
+        <div class="ta__logo">
+          <a href="#">..Tod.List</a>
+        </div>
+        <div class="ta__top-right">
+          <button class="ta__add-task" id="add-task">
+            <i class="ri-add-line"></i> Add task
+          </button>
+          <button class="ta__add-category" id="add-category">
+            <i class="ri-add-line"></i> Add category
+          </button>
+          <div class="ta__today">
+            <p>Tuesday, 15</p>
+          </div>
+        </div>
+      </div>
+      <div class="ta__app-left-side">
+        <div class="ta__left-side-overlay"></div>
+        <div class="ta__left-side-wrapper">
+          <div class="ta__logo ta__logo-left-mobile">
+            <a href="#">..Tod.List</a>
+          </div>
+          <ul>
+            <li>
+              <a href="#" class="active" data-target="tasks-list">Task List</a>
+            </li>
+            <li>
+              <a href="#" data-target="tasks-done">Task Done</a>
+            </li>
+            <li>
+              <a href="#">Setting</a>
+            </li>
+            <li>
+              <a href="#">Help</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ta__main-board">
+        <div class="main-screen-task-list">
+          <div class="categories">
+            <div class="category" id="cat-1">
+              <div class="item">
+                <!-- <div class="cat-pic">
+                    <img src="./images/avatar.png" alt="" />
+                  </div> -->
+                <div class="cat-text">
+                  <p class="cat-name">Personal</p>
+                  <p>You have 10 tasks</p>
+                </div>
+                <div class="options">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tasks-list-screen">
+          <div class="ta__app-heading">
+            <button href="#" class="back-arrow">
+              <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <p class="task-count-per-category">10 tasks</p>
+          </div>
+          <div class="ta_tasks-wrapper">
+            <div class="tasks">
+              <div class="task-wrapper">
+                <label for="task" class="task">
+                  <input type="checkbox" name="task" id="task" />
+                  <span class="checkmark-icon"><i class="ri-check-line"></i></span>
+                  <span class="task-text">Programming today</span>
+                </label>
+                <button class="delete">
+                  <i class="ri-delete-bin-7-line"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tasks-done-screen">
+          <div class="ta__app-heading">
+            <!-- <button href="#" class="back-arrow">
+              <i class="ri-arrow-left-s-line"></i>
+            </button> -->
+            <p class="ta__done-count">10 tasks</p>
+          </div>
+          <div class="ta__done-wrapper">
+            <h3 class="ta__done-title">Tasks Done</h3>
+            <div class="tasks">
+              <div class="task-wrapper">
+                <label for="task" class="task">
+                  <input type="checkbox" name="task" id="task" />
+                  <span class="checkmark-icon"><i class="ri-check-line"></i></span>
+                  <span class="task-text">Programming today</span>
+                </label>
+                <button class="delete">
+                  <i class="ri-delete-bin-7-line"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ta__form-overlay">
+        <div class="ta_popin_overlay"></div>
+        <div class="ta__form-wrapper">
+          <button class="close-form"><i class="ri-close-line"></i></button>
+          <div class="ta__form-title">Add Task</div>
+          <form class="add-task-form" id="add-task-form">
+            <div class="form-group">
+              <label for="task">
+                <input type="text" name="task" id="task" required />
+                <span>Task</span>
+              </label>
+            </div>
+            <div class="form-group" id="category-form">
+              <label for="task-category-select">
+                <span>Category</span>
+                <select name="task-category-select" id="task-category-select">
+                  <option value="Personal">Personal</option>
+                  <option value="Work">Work</option>
+                </select>
+              </label>
+            </div>
+            <button type="submit" id="ta_submit-task">Add</button>
+          </form>
+
+          <form class="add-category-form" id="add-category-form">
+            <div class="form-group">
+              <label for="task">
+                <input type="text" name="task" id="task" required />
+                <span>Category</span>
+              </label>
+            </div>
+            <button type="submit" id="ta_submit-task">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
+</html>
