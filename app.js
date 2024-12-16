@@ -207,6 +207,8 @@ const topDate = document.querySelector('.ta__today');
 const categoriesContainer = document.querySelector(".categories");
 const tasksContainer = document.querySelector(".ta_tasks-wrapper .tasks");
 const taskListCount = document.querySelector(".tasks-list-screen .task-count-per-category");
+const burgerMob = document.querySelector('.ta__app-heading .ta__burger-mob');
+const innerContent = document.querySelector('.ta__inner-content');
 let selectedCategory = categories[0];
 
 topDate.innerHTML = "Today, " + new Date(Date.now()).toLocaleString('en-GB').split(',')[0].split('/').join('-');
@@ -216,7 +218,7 @@ topDate.innerHTML = "Today, " + new Date(Date.now()).toLocaleString('en-GB').spl
  * If the categories key does not exist in local storage, it returns an empty array.
  * @returns {Array} The categories in local storage.
  */
-function loadCat(){
+function loadCat() {
     return categories = getDataFormLocalStorage("categories");
 }
 
@@ -383,7 +385,7 @@ function renderCategries() {
             let currentCatTasks = getTasksByCategory(selectedCategory);
             taskListCount.innerHTML = currentCatTasks.length + ' tasks';
             tasksContainer.innerHTML = "";
-    
+
             taskIteration(currentCatTasks, tasksContainer, false);
             setClass(screenContainer, 'show-lists-screen');
         });
@@ -471,7 +473,7 @@ function taskIteration(tasksToIterate, tasksContainer, isTaskDone) {
         const deleteButton = taskWrapper.querySelector(".delete");
         deleteButton.addEventListener("click", function () {
             tasks = tasks.filter(t => t.id !== task.id); // Remove task from main array
-            setDataToLocalStorage("tasks", tasks); 
+            setDataToLocalStorage("tasks", tasks);
 
             renderCategries();
             window.location.reload();
@@ -494,15 +496,17 @@ const tasksDoneLink = document.querySelector('a[data-target="tasks-done"]');
 const alltasksLink = document.querySelector('a[data-target="tasks-list"]');
 const tasksDoneCount = document.querySelector(".tasks-done-screen .ta__done-count");
 const tasksDoneContainer = document.querySelector(".tasks-done-screen .ta__done-wrapper .tasks");
+const homeLink = document.querySelectorAll('.ta__logo>button');
 const tasksDone = tasks.filter((task) => task.completed);
 
-// add and remove active class on list items when clicked
-const listItems = document.querySelectorAll('.ta__app-left-side ul li a');
+// add and remove active class on menu list items when clicked
+const menuLinkListItems = document.querySelectorAll('.ta__app-left-side ul li a');
 
-listItems.forEach(item => {
+menuLinkListItems.forEach(item => {
     item.addEventListener('click', function (e) {
-        listItems.forEach(link => removeClass(link, 'active'));
+        menuLinkListItems.forEach(link => removeClass(link, 'active'));
         setClass(e.target, 'active');
+        removeClass(innerContent, 'show-menu');
     });
 });
 
@@ -531,6 +535,26 @@ alltasksLink.addEventListener("click", () => {
     removeClass(screenContainer, "show-taks-done-screen");
     removeClass(screenContainer, "show-lists-screen");
 })
+
+burgerMob.addEventListener("click", () => {
+    toogleClass(innerContent, 'show-menu');
+})
+
+homeLink.forEach((link) => {
+    link.addEventListener("click", () => {
+        menuLinkListItems.forEach(item => {
+            menuLinkListItems.forEach(link => removeClass(link, 'active'));
+        });
+        menuLinkListItems[0].classList.add('active');
+        removeClass(innerContent, 'show-menu');
+        removeClass(screenContainer, 'show-lists-screen');
+        removeClass(screenContainer, 'show-taks-done-screen');
+    });
+})
+
+function toogleClass(elem, className) {
+    elem.classList.toggle(className);
+}
 
 /**
  * Executes when the window has finished loading. Checks if there are any
