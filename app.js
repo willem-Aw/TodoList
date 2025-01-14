@@ -1,190 +1,3 @@
-// let categories = [
-//     {
-//         title: "Personal",
-//     },
-//     {
-//         title: "Work",
-//     },
-//     {
-//         title: "Shopping",
-//     },
-//     {
-//         title: "Coding",
-//     },
-//     {
-//         title: "Health",
-//     },
-//     {
-//         title: "Fitness",
-//     },
-//     {
-//         title: "Education",
-//     },
-//     {
-//         title: "Finance",
-//     },
-// ];
-
-/*let tasks = [
-    {
-        id: 1,
-        task: "Go to market",
-        category: "Shopping",
-        completed: true,
-    },
-    {
-        id: 2,
-        task: "Read a chapter of a book",
-        category: "Personal",
-        completed: false,
-    },
-    {
-        id: 3,
-        task: "Prepare presentation for meeting",
-        category: "Work",
-        completed: false,
-    },
-    {
-        id: 4,
-        task: "Complete coding challenge",
-        category: "Coding",
-        completed: false,
-    },
-    {
-        id: 5,
-        task: "Take a 30-minute walk",
-        category: "Health",
-        completed: false,
-    },
-    {
-        id: 6,
-        task: "Do a 20-minute HIIT workout",
-        category: "Fitness",
-        completed: false,
-    },
-    {
-        id: 7,
-        task: "Watch an educational video online",
-        category: "Education",
-        completed: false,
-    },
-    {
-        id: 8,
-        task: "Review monthly budget",
-        category: "Finance",
-        completed: false,
-    },
-    {
-        id: 9,
-        task: "Buy groceries for the week",
-        category: "Shopping",
-        completed: false,
-    },
-    {
-        id: 10,
-        task: "Write in a journal",
-        category: "Personal",
-        completed: false,
-    },
-    {
-        id: 11,
-        task: "Send follow-up emails",
-        category: "Work",
-        completed: false,
-    },
-    {
-        id: 12,
-        task: "Work on a coding side project",
-        category: "Coding",
-        completed: false,
-    },
-    {
-        id: 13,
-        task: "Try a new healthy recipe",
-        category: "Health",
-        completed: false,
-    },
-    {
-        id: 14,
-        task: "Attend a yoga class",
-        category: "Fitness",
-        completed: false,
-    },
-    {
-        id: 15,
-        task: "Read an article about a new topic",
-        category: "Education",
-        completed: false,
-    },
-    {
-        id: 16,
-        task: "Set up automatic bill payments",
-        category: "Finance",
-        completed: false,
-    },
-    // Additional tasks for each category
-    {
-        id: 17,
-        task: "Buy new clothes",
-        category: "Shopping",
-        completed: false,
-    },
-    {
-        id: 18,
-        task: "Meditate for 10 minutes",
-        category: "Personal",
-        completed: false,
-    },
-    {
-        id: 19,
-        task: "Prepare agenda for team meeting",
-        category: "Work",
-        completed: false,
-    },
-    {
-        id: 20,
-        task: "Debug a software issue",
-        category: "Coding",
-        completed: false,
-    },
-    {
-        id: 21,
-        task: "Try a new recipe for lunch",
-        category: "Health",
-        completed: false,
-    },
-    {
-        id: 22,
-        task: "Go for a run",
-        category: "Fitness",
-        completed: false,
-    },
-    {
-        id: 23,
-        task: "Learn a new language online",
-        category: "Education",
-        completed: false,
-    },
-    {
-        id: 24,
-        task: "Read about history",
-        category: "Education",
-        completed: false,
-    },
-    {
-        id: 25,
-        task: "Review investment portfolio",
-        category: "Finance",
-        completed: false,
-    },
-    {
-        id: 26,
-        task: "Review investment portfolio",
-        category: "Finance",
-        completed: false,
-    },
-    // Add more tasks for each category as desired
-];*/
 let tasks = getDataFormLocalStorage("tasks");
 let categories = getDataFormLocalStorage("categories");
 
@@ -291,7 +104,7 @@ addTaskFom.addEventListener("submit", (e) => {
     const category = taskCatSelect.value;
 
     const newTask = {
-        id: tasks.length + 1,
+        id: Date.now(),
         task,
         category,
         // date: new Date().toLocaleDateString(),
@@ -312,7 +125,7 @@ addCatFom.addEventListener("submit", (e) => {
     // e.preventDefault();
     const category = addCatFom.querySelector("#task").value;
     const newCategory = {
-        id: categories.length + 1,
+        id: Date.now(),
         title: category,
     };
     categories.push(newCategory);
@@ -412,6 +225,12 @@ function renderCategries() {
             setDataToLocalStorage("tasks", tasks);
             renderCategries();
             window.location.reload();
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!deleteCatButton.contains(event.target)) {
+                optionsContent.classList.remove('active');
+            }
         });
     });
 };
