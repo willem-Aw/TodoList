@@ -1,6 +1,9 @@
 # Full HTML-CSS-JS Todo App
 This is a simple full-stack Todo App built with HTML, CSS and JavaScript. The user can add a new task, delete a task, mark a task as completed, and view all the tasks that have been completed.
 
+Here is the link to the app:
+<https://willem-aw.github.io/TodoList/>
+
 Here is a screenshot of the app:
 
 ![Screenshot of the app](./images/ScreenShot/Cat-Screen.png)
